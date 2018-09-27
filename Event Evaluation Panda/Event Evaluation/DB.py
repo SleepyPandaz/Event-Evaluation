@@ -15,55 +15,58 @@ def create_connection(db_file):
     """
     try:
         conn = sqlite3.connect(db_file)
-        return conn
+        cursor=database.cursor()
+        return conn, cursor
     except Error as e:
         print(e)
  
     return None
  
+def close(conn):
+    """ Commit changes and close connection to the database """
+    # conn.commit()
+    conn.close()
+    
+def total_rows(cursor, table_name, print_out=False):
+    """ Returns the total number of rows in the database """
+    cursor.execute('SELECT COUNT(*) FROM {}'.format(table_name))
+    count = cursor.fetchall()
+    if print_out:
+        print('\nTotal rows: {}'.format(count[0][0]))
+    return count[0][0]
  
-def select_all_tasks(conn):
+ 
+def values_in_col(cursor, table_name, print_out=True):
+    """ Returns a dictionary with columns as keys
+    and the number of not-null entries as associated values.
     """
-    Query all rows in the tasks table
-    :param conn: the Connection object
-    :return:
-    """
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM tasks")
- 
-    rows = cur.fetchall()
- 
-    for row in rows:
-        print(row)
- 
- 
-def select_task_by_priority(conn, priority):
-    """
-    Query tasks by priority
-    :param conn: the Connection object
-    :param priority:
-    :return:
-    """
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM tasks WHERE priority=?", (priority,))
- 
-    rows = cur.fetchall()
- 
-    for row in rows:
-        print(row)
+    cursor.execute('PRAGMA TABLE_INFO({})'.format(table_name))
+    info = cursor.fetchall()
+    col_dict = dict()
+    for col in info:
+        col_dict[col[1]] = 0
+    for col in col_dict:
+        c.execute('SELECT ({0}) FROM {1} '
+                  'WHERE {0} IS NOT NULL'.format(col, table_name))
+        # In my case this approach resulted in a
+        # better performance than using COUNT
+        number_rows = len(c.fetchall())
+        col_dict[col] = number_rows
+    if print_out:
+        print("\nNumber of entries per column:")
+        for i in col_dict.items():
+            print('{}: {}'.format(i[0], i[1]))
+    return col_dict
+
  
  
 def main():
-    database = sqlite3.connect("test.sqlite")
+    database = "CSCI330.sqlite"
+    tableName = "Students"
  
-    # create a database connection
-    conn = create_connection("test.db")
-    #with conn:
-    #    print("1. Query task by priority:")
-    #    select_task_by_priority(conn,1)
- 
-    #    print("2. Query all tasks")
-    #    select_all_tasks(conn)
+    conn, cursor = connect(sqlite_file)
+    
+    values_in_col(cursor, tableName, print_out=True)
  
     database.close()
 if __name__ == '__main__':
