@@ -4,6 +4,7 @@ Created on Sep 26, 2018
 @author: ZakLuetmer
 '''
 import sqlite3
+import csv
 from sqlite3 import Error
  
  
@@ -36,38 +37,32 @@ def total_rows(cursor, table_name, print_out=False):
     return count[0][0]
  
  
-def values_in_col(cursor, table_name, print_out=True):
-    """ Returns a dictionary with columns as keys
-    and the number of not-null entries as associated values.
-    """
-    cursor.execute('PRAGMA TABLE_INFO({})'.format(table_name))
-    info = cursor.fetchall()
-    col_dict = dict()
-    for col in info:
-        col_dict[col[1]] = 0
-    for col in col_dict:
-        c.execute('SELECT ({0}) FROM {1} '
-                  'WHERE {0} IS NOT NULL'.format(col, table_name))
-        # In my case this approach resulted in a
-        # better performance than using COUNT
-        number_rows = len(c.fetchall())
-        col_dict[col] = number_rows
-    if print_out:
-        print("\nNumber of entries per column:")
-        for i in col_dict.items():
-            print('{}: {}'.format(i[0], i[1]))
-    return col_dict
 
+def add_data_Students(dataFileName, cur):
+     """ Add data to database by reading .txt file
+    :param dataFileName: .txt file with data to be imported
+     """           
+     with open(dataFileName) as csv_file:
+         csv_reader = csv.reader(csv_file, delimiter=',')
+         for row in csv_reader:
+                 cur.execute("INSERT INTO Students VALUES (?, ?, ?, ?, ?)", row)
+                 continue
+         csv_reader.close()
+                 
+                 
  
- 
+             
 def main():
-    database = "CSCI330.sqlite"
+    database = "CSCI330.db"
     tableName = "Students"
- 
-    conn, cursor = connect(sqlite_file)
+    csvFile = "Test.csv"
+
+    conn= sqlite3.connect(database)
+    cur = conn.cursor() 
     
-    values_in_col(cursor, tableName, print_out=True)
- 
-    database.close()
+    add_data_Students(csvFile, cur)
+    
+    conn.commit()
+    conn.close()
 if __name__ == '__main__':
     main()
