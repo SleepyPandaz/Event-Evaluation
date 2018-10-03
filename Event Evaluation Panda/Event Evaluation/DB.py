@@ -45,9 +45,17 @@ def add_data_Students(dataFileName, cur):
      with open(dataFileName) as csv_file:
          csv_reader = csv.reader(csv_file, delimiter=',')
          for row in csv_reader:
+             cur.execute("""SELECT ID
+             FROM Students
+             WHERE ID=?""",(row[0],))
+             
+             result = cur.fetchone()
+             if result:
+                 raise ValueError("ID Already Used")
+             else:
                  cur.execute("INSERT INTO Students VALUES (?, ?, ?, ?, ?)", row)
-                 continue
-         csv_reader.close()
+          
+         csv_file.close()
                  
                  
  
