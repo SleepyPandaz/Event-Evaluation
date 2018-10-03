@@ -56,9 +56,33 @@ def add_data_Students(dataFileName, cur):
                  cur.execute("INSERT INTO Students VALUES (?, ?, ?, ?, ?)", row)
           
          csv_file.close()
+
+def add_data_Events(dataFileName, cur):
+     """ Add data to database by reading .txt file
+    :param dataFileName: .txt file with data to be imported
+     """           
+     with open(dataFileName) as csv_file:
+         csv_reader = csv.reader(csv_file, delimiter=',')
+         for row in csv_reader:
+             cur.execute("""SELECT Name
+             FROM Events
+             WHERE Name=?""",(row[0],))
+             
+             result = cur.fetchone()
+             if result:
+                 raise ValueError("Event Already in Database")
+             else:
+                 cur.execute("INSERT INTO Events VALUES (?, ?, ?, ?, ?)", row)
+          
+         csv_file.close()                 
                  
-                 
+def get_Students(cur):
+    cur.execute("SELECT * FROM Students")
+    print(cur.fetchall())                
  
+def get_Events(cur):
+    cur.execute("SELECT * FROM Events")
+    print(cur.fetchall())  
              
 def main():
     database = "CSCI330.db"
@@ -68,7 +92,13 @@ def main():
     conn= sqlite3.connect(database)
     cur = conn.cursor() 
     
-    add_data_Students(csvFile, cur)
+    #add_data_Students(csvFile, cur)
+    
+    #add_data_Events(events, cur)
+    
+    #get_Students(cur)
+    
+    #get_Events(cur)
     
     conn.commit()
     conn.close()
