@@ -77,10 +77,9 @@ WSGI_APPLICATION = 'Website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'git/Event-Evaluation/Event Evaluation Panda/Event Evaluation/CSCI330.db',
+        'NAME': 'CSCI330.db',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
