@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'Website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'C:/Users/ZakLuetmer/desktop/SQlite/CSCI330.db',
+        'NAME': 'git/Event-Evaluation/Event Evaluation Panda/Event Evaluation/CSCI330.db',
     }
 }
 
