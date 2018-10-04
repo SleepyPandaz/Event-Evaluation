@@ -75,7 +75,16 @@ def add_data_Events(dataFileName, cur):
                  cur.execute("INSERT INTO Events VALUES (?, ?, ?, ?, ?)", row)
           
          csv_file.close()                 
-                 
+
+def delete_Student(id, cur):
+    """
+    Delete a task by task id
+    :param cur:  Cursor to the database
+    :param id: id of the student to delete
+    :return:
+    """
+    sql = 'DELETE FROM Students WHERE id=?'
+    cur.execute(sql, (id,)) 
 def get_Students(cur):
     cur.execute("SELECT * FROM Students")
     print(cur.fetchall())                
@@ -95,6 +104,8 @@ def main():
     #add_data_Students(csvFile, cur)
     
     #add_data_Events(events, cur)
+    
+    #delete_Student("12345",cur)
     
     #get_Students(cur)
     
