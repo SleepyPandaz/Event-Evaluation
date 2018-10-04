@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'Groups.apps.GroupsConfig',
+    'Events.apps.EventsConfig',
+    'Student.apps.StudentConfig',
+    'Event_Statistics.apps.Event_StatisticsConfig',
     'poll.apps.PollConfig',
     'django.contrib.admin',
     'django.contrib.auth',
