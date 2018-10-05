@@ -13,9 +13,9 @@ def index(request):
   #return render(request,'Events/general_template.html')
   
 def list(request):
-    latest_event_list = Event.objects.order_by('-eventName')[:5]
-    template = loader.get_template('Events/index2.html')
+    latest_event_list = Event.objects.all()
     context = {
-        'latest_Event_list': latest_event_list,
+        'latest_event_list': latest_event_list,
     }
-    return HttpResponse(template.render(context, request))
+    #return HttpResponse(template.render(context, request))
+    return render(request,'Events/index2.html',context)
