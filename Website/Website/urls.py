@@ -6,6 +6,6 @@ urlpatterns = [
     path('Groups/', include('Groups.urls')),
     path('Events/', include('Events.urls')),
     #path('Events_Statistics/', include('Events_Statistics.urls')),
-    #path('Student/', include('Student.urls')),
+    path('Student/', include('Student.urls')),
     path('admin/', admin.site.urls),
 ]
