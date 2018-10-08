@@ -6,6 +6,7 @@ Created on Sep 26, 2018
 import sqlite3
 import csv
 from sqlite3 import Error
+import psycopg2
  
  
 def create_connection(db_file):
@@ -42,20 +43,10 @@ def add_data_Students(dataFileName, cur):
      """ Add data to database by reading .txt file
     :param dataFileName: .txt file with data to be imported
      """           
-     with open(dataFileName) as csv_file:
-         csv_reader = csv.reader(csv_file, delimiter=',')
-         for row in csv_reader:
-             cur.execute("""SELECT ID
-             FROM Students
-             WHERE ID=?""",(row[0],))
-             
-             result = cur.fetchone()
-             if result:
-                 raise ValueError("ID Already Used")
-             else:
-                 cur.execute("INSERT INTO Students VALUES (?, ?, ?, ?, ?)", row)
-          
-         csv_file.close()
+     with open(dataFileName, 'r') as f:
+         # Notice that we don't need the `csv` module.
+         cur.copy_from(f, 'Students', sep=',')
+         print("Addition Successful") 
 
 def add_data_Events(dataFileName, cur):
      """ Add data to database by reading .txt file
@@ -73,10 +64,11 @@ def add_data_Events(dataFileName, cur):
                  raise ValueError("Event Already in Database")
              else:
                  cur.execute("INSERT INTO Events VALUES (?, ?, ?, ?, ?)", row)
-          
+         
+         print("Addition Successful") 
          csv_file.close()                 
 
-def delete_Student(id, cur):
+def delete_Student(cur,id):
     """
     Delete a task by task id
     :param cur:  Cursor to the database
@@ -85,6 +77,19 @@ def delete_Student(id, cur):
     """
     sql = 'DELETE FROM Students WHERE id=?'
     cur.execute(sql, (id,)) 
+    print("Delete Successful")
+    
+def delete_Event(cur,name):
+    """
+    Delete a task by task id
+    :param cur:  Cursor to the database
+    :param name: name of the event to delete
+    :return:
+    """
+    sql = 'DELETE FROM Events WHERE Name=?'
+    cur.execute(sql, (name,)) 
+    print("Delete Successful")
+        
 def get_Students(cur):
     cur.execute("SELECT * FROM Students")
     print(cur.fetchall())                
@@ -98,10 +103,11 @@ def main():
     tableName = "Students"
     csvFile = "Test.csv"
 
-    conn= sqlite3.connect(database)
+    conn = psycopg2.connect(host="localhost", user="postgres", password="Legend34", dbname="EventEvaluation")
+    #conn= sqlite3.connect(database)
     cur = conn.cursor() 
     
-    #add_data_Students(csvFile, cur)
+    add_data_Students(csvFile, cur)
     
     #add_data_Events(events, cur)
     
