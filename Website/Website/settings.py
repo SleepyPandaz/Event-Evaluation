@@ -81,17 +81,8 @@ WSGI_APPLICATION = 'Website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
 
-
-
-# branch 'master' of https://github.com/SleepyPandaz/Event-Evaluation.git
-        'NAME': 'CSCI330.db',
-
-
-
- #Sbranch 'master' of https://github.com/SleepyPandaz/Event-Evaluation.git
-        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        #'NAME': 'C:/Users/ZakLuetmer/desktop/SQlite/CSCI330.db',
     }
 }
 
