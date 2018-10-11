@@ -43,11 +43,21 @@ def add_data_Students(dataFileName, cur):
      """ Add data to database by reading .txt file
     :param dataFileName: .txt file with data to be imported
      """           
-     with open(dataFileName, 'r') as f:
-         # Notice that we don't need the `csv` module.
-         cur.copy_from(f, 'Students', sep=',')
+     with open(dataFileName) as csv_file:
+         csv_reader = csv.reader(csv_file, delimiter=',')
+         for row in csv_reader:
+             cur.execute("""SELECT ID
+             FROM Students
+             WHERE ID=?""",(row[0],))
+             
+             result = cur.fetchone()
+             if result:
+                 print("Student " + row[0] + " Already in Database")
+             else:
+                 cur.execute("INSERT INTO STUDENTS VALUES (?, ?, ?, ?, ?)", row)
+         
          print("Addition Successful") 
-
+         csv_file.close()       
 def add_data_Events(dataFileName, cur):
      """ Add data to database by reading .txt file
     :param dataFileName: .txt file with data to be imported
@@ -63,7 +73,7 @@ def add_data_Events(dataFileName, cur):
              if result:
                  raise ValueError("Event Already in Database")
              else:
-                 cur.execute("INSERT INTO Events VALUES (?, ?, ?, ?, ?)", row)
+                 cur.execute("INSERT INTO Events VALUES (?)", row)
          
          print("Addition Successful") 
          csv_file.close()                 
@@ -103,15 +113,15 @@ def main():
     tableName = "Students"
     csvFile = "Test.csv"
 
-    conn = psycopg2.connect(host="localhost", user="postgres", password="Legend34", dbname="EventEvaluation")
-    #conn= sqlite3.connect(database)
+    #conn = psycopg2.connect(host="localhost", user="postgres", password="Legend34", dbname="EventEvaluation")
+    conn= sqlite3.connect(database)
     cur = conn.cursor() 
     
     add_data_Students(csvFile, cur)
     
     #add_data_Events(events, cur)
     
-    #delete_Student("12345",cur)
+    delete_Student(cur,"12345")
     
     #get_Students(cur)
     
