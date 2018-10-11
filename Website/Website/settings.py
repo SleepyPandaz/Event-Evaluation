@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Home',
     'Groups.apps.GroupsConfig',
     'Events.apps.EventsConfig',
     'Student.apps.StudentConfig',
