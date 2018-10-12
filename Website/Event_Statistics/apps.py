@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class EventStatisticsConfig(AppConfig):
+class Event_StatisticsConfig(AppConfig):
     name = 'Event_Statistics'

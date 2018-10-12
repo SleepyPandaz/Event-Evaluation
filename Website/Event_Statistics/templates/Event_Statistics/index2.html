@@ -1,0 +1,12 @@
+
+{% if latest_event_list %}
+    <ul>
+    {% for event in latest_event_list %}
+        <li><a href="/Events/{{ event.id }}/">{{ event.eventName }}</a></li>
+    {% endfor %}
+    </ul>
+    <a href="http://127.0.0.1:8000/Events/Index/">Go to the table</a>
+{% else %}
+    <p>No events are available.</p>
+    <a href="http://127.0.0.1:8000/Events/Index/">Go to the table</a>
+{% endif %}
