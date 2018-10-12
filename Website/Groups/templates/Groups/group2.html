@@ -1,0 +1,15 @@
+{% include "general_template.html" %}
+{% if student_name %}
+    <ul>
+    {% for student in student_name  %}
+        <li><a href="/Groups/{{ student.name }}/">{{ student.year}}/">{{student.major}}</a></li>
+    {% endfor %}
+    </ul>
+    
+{% else %}
+    <p>There are no students.</p>
+    
+    
+{% endif %}
+<a href="http://127.0.0.1:8000/">Home Page</a>
+<a href="http://127.0.0.1:8000/Groups/group/">Go to the table</a> 
