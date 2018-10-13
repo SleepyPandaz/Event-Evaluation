@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.template import loader
 import datetime
 from django.shortcuts import HttpResponse
-from .models import Groups,Events
+from .models import Name
 
 def index(request):
    html = "<H1>Students</H1><HR>"
