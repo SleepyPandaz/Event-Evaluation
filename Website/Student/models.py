@@ -7,7 +7,7 @@ class Name(models.Model):
     lastName = models.CharField(max_length=30)
     #fullName = firstName + lastName
     def __str__(self):
-        return self.fullName
+        return '%s' % (self.firstName)
    
     
 class Ident(models.Model):
