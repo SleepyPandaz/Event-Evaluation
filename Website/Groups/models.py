@@ -13,3 +13,8 @@ class Events(models.Model):
     date = models.DateTimeField("Date of Event")
     def __str__(self):
         return '%s' % (self.name)
+class Event_Statistics(models.Model):
+    name = models.CharField(max_length=500)
+    numberOfParticipants= models.PositiveIntegerField(default=1)
+    def __str__(self):
+        return '%s' % (self.name)

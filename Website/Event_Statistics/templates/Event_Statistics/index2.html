@@ -1,12 +1,12 @@
 
-{% if latest_event_list %}
+{% if ESList %}
     <ul>
-    {% for event in latest_event_list %}
-        <li><a href="/Events/{{ event.id }}/">{{ event.eventName }}</a></li>
+    {% for event in ESList %}
+        <li><a style="font-size=30" href="/Event_Statistics/{{ event.id }}/">{{ event.eventName }}</a></li>
     {% endfor %}
     </ul>
-    <a href="http://127.0.0.1:8000/Events/Index/">Go to the table</a>
+    <a href="http://127.0.0.1:8000/Event_Statistics/index/">Go to the table</a>
 {% else %}
     <p>No events are available.</p>
-    <a href="http://127.0.0.1:8000/Events/Index/">Go to the table</a>
+    <a href="http://127.0.0.1:8000/Event_Statistics/index/">Go to the table</a>
 {% endif %}

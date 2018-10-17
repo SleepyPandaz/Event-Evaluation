@@ -13,8 +13,8 @@ def index(request):
   return render(request,'Event_Statistics/index.html')
   
 def list(request):
-    latest_event_list = Event_Statistics.objects.all()
+    ESList = Event_Statistics.objects.all()
     context = {
-        'latest_event_list': latest_event_list,
+        'ESList': ESList,
     }
     return render(request,'Event_Statistics/index2.html',context)
