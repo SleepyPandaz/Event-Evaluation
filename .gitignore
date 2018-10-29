@@ -1,5 +1,6 @@
 __pycache__
 CSCI330.db
+db.sqlite3
 .DS_Store
 # Byte-compiled / optimized / DLL files
 __pycache__/
