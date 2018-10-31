@@ -7,50 +7,105 @@
  	border: 1px solid black;
  	}
   th,td{
+    text-align: left;
   	padding: 5px;
   	}
   th{
-  	text-align: left;
+  	cursor: pointer;
   	}
  </style>
 <body>
 <title> Groups </title>
 <head><b><center><font size="18">Groups: Demographics </font></center></b></head>
-<div align = "right">
-<select name = "Sort by">
-	<option value = "Senior-First Year"> Senior-First Year</option>
-	<option value = "First Year-Senior"> First Year-Senior</option>
-	<option value = "Major">Major</option>
-	<option value = "Country">Country</option>
-	<option value = "State">State</option>
-	<option value = "City">City</option>
-	<option value = "International">International</option>
-	<option value = "Out of State">Out of State</option>
-</select>
-</div>
-<br><br>
+<p> Click the headers to sort the table. Click again to sort descending (Z to A).</p>
 
- <table style="width:100%">
+ <table id="myTable" style="width:100%">
+<th onclick = "sortTable(0)"> Name </th>
+<th onclick = "sortTable(1)"> Year </th>
+<th onclick = "sortTable(2)"> Major </th>
+<th onclick = "sortTable(3)"> Country/State </th>
 
- <tr>
- 	<th> Name </th>
- 	<th> Year </th>
- 	<th> Major </th>
- 	<th> Country/State </th>
- </tr>
  <tr>
  	<td> John Mayes </td>
- 	<td> Sophmore </td>
+ 	<td> 2 </td>
  	<td> CS </td>
- 	<td> MN </td>
+ 	<td> CA </td>
  </tr>
  <tr>
  	<td> Jane Doe </td>
- 	<td> Senior </td>
+ 	<td> 4 </td>
  	<td> Pre-Med </td>
  	<td> MN     </td>
  </tr>
+ <tr>
+ 	<td> Mary Jane </td>
+ 	<td> 1 </td>
+ 	<td> Nutrition </td>
+ 	<td> NY </td>
+ </tr>
+ <tr>
+ 	<td> Suzzie Thomas </td>
+ 	<td> 3 </td>
+ 	<td> Communication </td>
+ 	<td> ND </td>
+ </tr>
  </table>
+ <script>
+	function sortTable(n) {
+  		var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  		table = document.getElementById("myTable");
+  		switching = true;
+  	//Set the sorting direction to ascending:
+  	dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
 <a href="http://127.0.0.1:8000/Groups/">Go to the list of events</a>
 <a href="http://127.0.0.1:8000/">Home Page</a>
  </body>
