@@ -9,4 +9,5 @@ urlpatterns = [
     path('Event_Statistics/', include('Event_Statistics.urls')),
     path('Student/', include('Student.urls')),
     path('admin/', admin.site.urls),
+    path('Login/', include('django.contrib.auth.urls')),
 ]
