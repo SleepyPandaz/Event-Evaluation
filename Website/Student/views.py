@@ -11,9 +11,9 @@ def index(request):
    return render(request,'Student/index.html')
     
 def list(request):
-    latest_event_list = Name.objects.all()
+    name_list = Name.objects.all()
     context = {
-        'latest_event_list': latest_event_list,
+        'name_list': name_list,
     }
     return render(request,'Student/index.html',context)
 
