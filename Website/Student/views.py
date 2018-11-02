@@ -10,13 +10,10 @@ def index(request):
    html = "<H1>Students</H1><HR>"
    return render(request,'Student/index.html')
     
-        
-
-#def list(request):
-   # name_list = Name.objects.get.all()
-    #template = loader.get_template('Student/index.html')
-    #context = {
-   #     'name_list': name_list,
-   # }
-   # return render(request, 'Student/index.html', context)
+def list(request):
+    latest_event_list = Name.objects.all()
+    context = {
+        'latest_event_list': latest_event_list,
+    }
+    return render(request,'Student/index.html',context)
 

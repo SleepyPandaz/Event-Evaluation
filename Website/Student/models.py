@@ -3,14 +3,9 @@ from unittest.util import _MAX_LENGTH
 
     
 class Name(models.Model):   
-    firstName = models.CharField(max_length=30)
-    lastName = models.CharField(max_length=30)
-    #fullName = firstName + lastName
+    first_Name = models.CharField(max_length=30)
+    last_Name = models.CharField(max_length=30)
     def __str__(self):
-        return '%s' % (self.firstName)
+        return '%s' % (self.first_Name)
    
     
-class Ident(models.Model):
-    number = models.ForeignKey(Name, on_delete=models.CASCADE)
-    def __str__(self):
-        return '%s' % (self.firstName)
