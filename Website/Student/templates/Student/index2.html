@@ -1,22 +1,13 @@
-{% include "generaltemplate.html" %}
+{% include "general_template.html" %}
 {% if name_list %}
     <ul>
     {% for student in name_list %}
-        
-        
-        
-        
-        <li>{{ Name.firstName }}</li>
-        
-        
-        
-        
-        
+        <li>{{student.firstName}} </li>
     {% endfor %}
     </ul>
     
 {% else %}
-    <p>No names are available.</p>
+    <p>No names have been entered.</p>
     
     
 {% endif %}
