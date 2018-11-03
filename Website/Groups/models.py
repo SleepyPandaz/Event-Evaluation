@@ -6,9 +6,9 @@ class Student(models.Model):
     name = models.CharField(max_length=400)
     major = models.CharField(max_length=200)
     year = models.IntegerField()
-    race_Ethnicity = models.CharField(max_length=800)
-    international= models.CharField(max_length=100)
-    campus = models.CharField(max_length=300)
+   # race_Ethnicity = models.CharField(max_length=800)
+    #international= models.CharField(max_length=100)
+   # campus = models.CharField(max_length=300)
     def __str__(self):
         return '%s' % (self.name)
 class Events(models.Model):
