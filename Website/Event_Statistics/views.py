@@ -17,4 +17,7 @@ def list(request):
     context = {
         'ESList': ESList,
     }
+
+    file=open("Alphabet_Soup_Evaluation.csv","r")
+    data = infile.read().split()
     return render(request,'Event_Statistics/index2.html',context)

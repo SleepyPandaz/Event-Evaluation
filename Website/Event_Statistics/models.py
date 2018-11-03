@@ -16,6 +16,11 @@ class Event_Statistics(models.Model):
     numberOfOutOfState=models.PositiveIntegerField(default=1)
     numberOfLocal=models.PositiveIntegerField(default=1)
     
+    def __init__(self, filename):
+        # load the file!
+    
     def __str__(self):
+        
         return '%s' % (self.eventName)
         
+    
