@@ -36,13 +36,13 @@ INSTALLED_APPS = [
     'Events.apps.EventsConfig',
     'Student.apps.StudentConfig',
     'Event_Statistics.apps.Event_StatisticsConfig',
-    'poll.apps.PollConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +126,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'Home'
 LOGOUT_REDIRECT_URL = 'Home'
+IMPORT_EXPORT_USE_TRANSACTIONS = True

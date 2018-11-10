@@ -18,4 +18,4 @@ def list(request):
         'latest_event_list': latest_event_list,
     }
     #return HttpResponse(template.render(context, request))
-    return render(request,'Events/index2.html',context)
+    return render(request,'Events/event_list_template.html',context)

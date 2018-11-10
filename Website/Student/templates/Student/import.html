@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% if messages %}
+	{% for message in messages %}
+	<div>
+		<strong>{{message}}</strong>
+	</div>
+	<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="file">
+    <button type="submit">Upload</button>
+    <a class="btn btn-danger" href="http://127.0.0.1:8000/Student/" role="button" style="margin-left:20px">Student Page</a>
+    </form>
+	{% endfor %}
+{% else %}
+	<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="file">
+    <button type="submit">Upload</button>
+    <a class="btn btn-danger" href="http://127.0.0.1:8000/Student/" role="button" style="margin-left:20px">Student Page</a>
+    <input type="hidden" name="redirect" value="http://127.0.0.1:8000/Student/">
+    </form>
+    
+    
+{% endif %}
+{% endblock %}
+{% include "general_template.html" %}

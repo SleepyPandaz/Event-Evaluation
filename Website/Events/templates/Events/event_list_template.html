@@ -1,0 +1,38 @@
+{% include "general_template.html" %}
+{% if latest_event_list %}
+
+<center><font size = "+3"> Events </font></center>
+
+<table style="width:100%">
+
+<style>	
+ table, th, td{ border: 1px solid black; }
+  th,td{padding: 5px;}
+  th{text-align: left;}
+ </style>
+ <tr>
+	<th>Date of Event</th>
+	<th>Event Name</th>
+	<th>Event Category</th>
+	<th>Years at CSBSJU </th>
+	<th>Number of Participants</th>
+	<th>Response Rate </th>
+ </tr>
+ <tr>
+ {% for event in latest_event_list %}
+        <td>{{event.eventDate}} </td> 
+        <td>{{event.eventName}} </td>
+        <td>{{event.eventCategory}} </td>
+        <td>{{event.eventYears}} </td>
+        <td>{{event.eventParticpants}} </td>
+        <td>{{event.eventResponseRate}} </td>
+ </tr>
+ {% endfor %}
+</table>
+{% else %}
+    <p>No events are available.</p>
+    
+    
+{% endif %}
+<a href="http://127.0.0.1:8000/">Home Page</a>
+<a href="http://127.0.0.1:8000/Events/Index/">Go to the table</a>

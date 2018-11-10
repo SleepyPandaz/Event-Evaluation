@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+ {% extends 'base.html' %}
 
 <!doctype html>
 <html lang="en">
@@ -9,17 +9,18 @@
   </head>
   <body>
  	{% block body %}
- 		<img src="Images/CSBSJU.jpg" alt="CSBSJU"  width="85" height="85"/>
-	  <div style="width:1200px; height:100px; margin-left:42%; margin-top:150px">
-	    <h1>Home Page</h1>
-	  </div> 
 	{% if user.is_authenticated %}
-  		Hi {{ user.username }}!
-  		<p><a href="{% url 'logout' %}">logout</a></p>
+	  <div style=text-align:right>
+	    <p>Hi {{ user.username }}!</p>
+	    <p><a href="{% url 'logout' %}">logout</a></p>
+	  </div>
+	
 	{% else %}
 		<meta http-equiv="refresh" content="0; URL=http://127.0.0.1:8000/login/">
 	{% endif %}
-	  <div style=" margin-left:29%">
+	<h1 style=text-align:center>Home</h1>
+	
+	  <div style= text-align:center>
 	    <a class="btn btn-danger" href="/admin" role="button" style="margin-left:20px">Admin Access</a>
 		<a class="btn btn-primary" href="/Events" role="button" style="margin-left:20px">Events</a>
 		<a class="btn btn-primary" href="/Groups" role="button" style="margin-left:20px">Groups</a>
