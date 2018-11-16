@@ -7,7 +7,9 @@ import sqlite3
 import csv
 from sqlite3 import Error
 import psycopg2
- 
+import tkinter as tk
+from tkinter import filedialog
+from tkinter import *
  
 def create_connection(db_file):
     """ create a database connection to the SQLite database
@@ -17,7 +19,7 @@ def create_connection(db_file):
     """
     try:
         conn = sqlite3.connect(db_file)
-        cursor=database.cursor()
+        cursor=conn.cursor()
         return conn, cursor
     except Error as e:
         print(e)
@@ -73,7 +75,7 @@ def add_data_Events(dataFileName, cur):
              if result:
                  raise ValueError("Event Already in Database")
              else:
-                 cur.execute("INSERT INTO Events VALUES (?)", row)
+                 cur.execute("INSERT INTO Events VALUES (?,?,?,?)", row)
          
          print("Addition Successful") 
          csv_file.close()                 
@@ -106,26 +108,60 @@ def get_Students(cur):
  
 def get_Events(cur):
     cur.execute("SELECT * FROM Events")
-    print(cur.fetchall())  
+    print(cur.fetchall()) 
+    
+def getSpecificYear(cur,year): 
+    cur.execute("SELECT * FROM Students WHERE Year=?")
+    print(cur.fetchall())
+    
+def exportDB(cur):
+    student_data = cur.execute("SELECT * FROM Students")
+    with open('studentData.csv', 'w') as f:
+        writer = csv.writer(f)
+        #writer.writerow(['Column 1', 'Column 2', ...])
+        writer.writerows(student_data)
+    f.close()
+    
+    event_data = cur.execute("SELECT * FROM Events")
+    with open('eventData.csv', 'w') as g:
+        writer = csv.writer(g)
+        writer.writerows(event_data)
+    g.close()  
+    
+def importDB(cur):
+    root = Tk()
+    file_path_students = filedialog.askopenfilename("Select Student Information")
+    f=open(file_path_students,'r') # open the Student csv data file
+    reader = csv.reader(f)
+    for row in reader:
+        cur.execute("INSERT INTO STUDENTS VALUES (?, ?, ?, ?, ?)", row)
+    
+    f.close()
+    file_path_events = filedialog.askopenfilename("Select Event Information")
+    g=open(file_path_events,'r') #open the Events csv data file
+    event_reader = csv.reader(g)
+    for row in event_reader:
+        cur.execute("INSERT INTO EVENTS VALUES (?, ?, ?, ?)", row)
+    g.close()
+
              
 def main():
     database = "CSCI330.db"
     tableName = "Students"
     csvFile = "Test.csv"
 
-    #conn = psycopg2.connect(host="localhost", user="postgres", password="Legend34", dbname="EventEvaluation")
-    conn= sqlite3.connect(database)
-    cur = conn.cursor() 
+    conn,cur = create_connection(database)
     
-    add_data_Students(csvFile, cur)
+    #add_data_Students(csvFile, cur)
     
     #add_data_Events(events, cur)
     
-    delete_Student(cur,"12345")
+    #delete_Student(cur,"12345")
     
     #get_Students(cur)
     
     #get_Events(cur)
+    exportDB(cur)
     
     conn.commit()
     conn.close()
