@@ -6,12 +6,10 @@ class Name(models.Model):
     firstName = models.CharField(max_length=30)
     middleName= models.CharField(max_length=30)
     lastName = models.CharField(max_length=30)
-    email = models.CharField(max_length=30)
-    studentId = models.CharField(max_length=15)
+    email = models.EmailField(max_length=30)
+    studentId = models.IntegerField()
     year = models.CharField(max_length=15)
-    numEvents = models.CharField(max_length=3)
-    numSurveys = models.CharField(max_length=3)
-
-    @property
+    numEvents = models.IntegerField(default=0)
+    numSurveys = models.IntegerField(default=0)
     def __str__(self):
         return '%s' % (self.firstName)

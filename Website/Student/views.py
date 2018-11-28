@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import HttpResponse
 from .models import Name
+from Events.models import Event
 from tablib import Dataset
 import csv,io
 from django.contrib import messages
@@ -25,20 +26,32 @@ def list(request):
 
 @permission_required('admin.can_add_log_entry')
 def student_upload(request):
-    storage = messages.get_messages(request)
+    
     if request.method == "GET":
         return render(request, 'Student/import.html')
     
     csv_file = request.FILES['file']
-    
+    fileName = csv_file.name
+    'if statement'
+    fileName.replace('_','')
+    _, created = Event.objects.update_or_create(
+        eventName = fileName,
+        eventDate = '',
+        eventCategory = '',
+        eventYears = '',
+        eventParticpants = '',
+        eventResponseRate = '',
+        )
     if not csv_file.name.endswith('.csv'):
-        messages.error(request,'That is not a csv file')
+        messages.error(request,'That is not a csv file'+csv_file.name)
         return redirect('student_upload')
     
     data_set = csv_file.read().decode('UTF-8')
     io_string = io.StringIO(data_set)
     next(io_string)
     for column in csv.reader(io_string,delimiter=',',quotechar='|'):
+        if (''.join(column) == ''):
+            continue
         _, created = Name.objects.update_or_create(
             firstName= column[4],
             middleName = column[5],
@@ -51,6 +64,9 @@ def student_upload(request):
         )
     return redirect('list')
         
-    
+def objectDelete(request, object_id):
+    object = get_object_or_404(Model, pk=object_id)
+    object.delete()
+         
     
     
