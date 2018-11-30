@@ -11,7 +11,7 @@ def index(request):
   return render(request,'Events/index.html')
   #return render(request,'Events/general_template.html')
   
-def list(request):
+def eventList(request):
     latest_event_list = Event.objects.all()
     context = {
         'latest_event_list': latest_event_list,
@@ -23,4 +23,4 @@ def objectDelete(request):
     post_id = request.GET['post_id']
     object = get_object_or_404(Event, pk=post_id)
     object.delete()
-    return redirect('list')
+    return redirect('eventList')

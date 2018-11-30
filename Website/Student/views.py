@@ -5,7 +5,6 @@ from django.template import loader
 from django.shortcuts import HttpResponse
 from .models import Name
 from Events.models import Event
-from tablib import Dataset
 import csv,io
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required
