@@ -14,14 +14,10 @@ def index(request):
   
 def list(request):
     ESList = Event_Statistics.objects.all()
-    file=open("Event_Statistics\dataFiles\Alphabet_Soup_Evaluation.csv",'r')
-    data=file.read().split("\n")
     context = {
         'ESList': ESList,
-        'data':data,
     }
-    
-    
-    
-    
+
+    file=open("Alphabet_Soup_Evaluation.csv","r")
+    data = infile.read().split()
     return render(request,'Event_Statistics/index2.html',context)

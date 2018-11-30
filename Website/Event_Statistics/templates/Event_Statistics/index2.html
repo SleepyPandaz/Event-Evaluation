@@ -4,107 +4,59 @@
 
 <div>   
 	 <div class=left>
-    	<div id="f1" class=button>
+    	<div class=button>
     		Freshman
     	</div>
-    	<div id="so1" class=button>
+    	<div class=button>
     		Sophomore
     	</div>
-    	<div  id="j1" class=button>
+    	<div class=button>
     		Junior
     	</div>
-    	<div  id="se1" class=button>
+    	<div class=button>
     		Senior
     	</div>
-    	<div  id="out1" class=button>
+    	<div class=button>
     		Out of State
     	</div>
-    	<div  id="loc1" class=button>
+    	<div class=button>
     		Local
     	</div>
-    	<div  id="csb1" class=button>
+    	<div class=button>
     		CSB
     	</div>
-    	<div  id="sju1" class=button>
+    	<div class=button>
     		SJU
     	</div>
     </div>
     
-	<div id="mid" class=mid>
-		    
-		<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/146/73fi1rab/amcharts.js"></script>
-		<div id="chartdiv"></div>
-		<style>
-		body {
-			background:white;
-		}
-		div { margin:  auto; text-align:center; width: 100%; height: 1000px }
-		</style>
-		<script type="text/javascript">
-		var chart;
-		var legend;
-		var a=260, b=201, c=65,d=39, e=19, f=10;
-		var chartData = [{
-		    country: "A",
-		    value: a},
-		{
-		    country: "B",
-		    value: b},
-		{
-		    country: "C",
-		    value: c},
-		{
-		    country: "D",
-		    value: d},
-		{
-		    country: "E",
-		    value: e},
-		{
-		    country: "F",
-		    value: f}];
-		AmCharts.ready(function() {
-
-		    chart = new AmCharts.AmPieChart();
-		    chart.dataProvider = chartData;
-		    chart.titleField = "country";
-		    chart.valueField = "value";
-		    chart.outlineColor = "";
-		    chart.outlineAlpha = 0.8;
-		    chart.outlineThickness = 2;
-
-		    chart.depth3D = 20;
-		    chart.angle = 30;
-
-		    chart.write("chartdiv");
-		});
-		</script>
-   
-    
+    <div class=mid>
+    graph
     </div>
     
     <div class=right>
-		<div  id="f2" class=button>
+		<div class=button>
     		Freshman
     	</div>
-    	<div id="so2" class=button>
+    	<div class=button>
     		Sophomore
     	</div>
-    	<div id="j2" class=button>
+    	<div class=button>
     		Junior
     	</div>
-    	<div id="se2" class=button>
+    	<div class=button>
     		Senior
     	</div>
-    	<div id="out2" class=button>
+    	<div class=button>
     		Out of State
     	</div>
-    	<div id="loc2" class=button>
+    	<div class=button>
     		Local
     	</div>
-    	<div id="csb2" class=button>
+    	<div class=button>
     		CSB
     	</div>
-    	<div id="sju2" class=button>
+    	<div class=button>
     		SJU
     	</div>
     </div>
@@ -114,101 +66,3 @@
     <a href="http://127.0.0.1:8000/">Go back to HomePage</a>
 
 </div>
-
-
-<script type="text/javascript">
-	function refresh(){
-		var mid=document.getElementById('mid');
-		var chartData = [{
-		    country: "A",
-		    value: 50},
-		{
-		    country: "B",
-		    value: 255},
-		{
-		    country: "C",
-		    value: 144},
-		{
-		    country: "D",
-		    value:45},
-		{
-		    country: "E",
-		    value: 25},
-		{
-		    country: "F",
-		    value: 160}];
-		chart = new AmCharts.AmPieChart();
-	    chart.dataProvider = chartData;
-	    chart.titleField = "country";
-	    chart.valueField = "value";
-	    chart.outlineColor = "";
-	    chart.outlineAlpha = 0.8;
-	    chart.outlineThickness = 2;
-
-	    chart.depth3D = 20;
-	    chart.angle = 30;
-
-	    chart.write("chartdiv");
-	}
-	
-    var f1 = document.getElementById('f1');
-	var f1b=0;
- 	
-    f1.onclick = function(){
-    if(f1b==0){
-        f1.style.backgroundColor="#1ec5e5";
-        f1b=true;
-        f2.style.backgroundColor="#1ec5e5";
-        f2b=true;}
-    else{
-    	f1.style.backgroundColor="#cc0000";
-    	f1b=false;
-    	f2.style.backgroundColor="#cc0000";
-    	f2b=false;}
-    	refresh();
-    }
-    
-    var f2 = document.getElementById('f2');
-	var f2b=0;
- 	
-    f2.onclick = function(){
-    if(f2b==0){
-        f2.style.backgroundColor="#1ec5e5";
-        f2b=true;}
-    else{
-    	f2.style.backgroundColor="#cc0000";
-    	f2b=false;}
-    	refresh();
-    }
-    var so1 = document.getElementById('so1');
-	var so1b=0;
- 	
-    so1.onclick = function(){
-    if(so1b==0){
-        so1.style.backgroundColor="#1ec5e5";
-        so1b=true;
-        so2.style.backgroundColor="#1ec5e5";
-        so2b=true;}
-    else{
-    	so1.style.backgroundColor="#cc0000";
-    	so1b=false;
-    	so2.style.backgroundColor="#cc0000";
-    	so2b=false;}
-    	refresh();
-    }
-    
-    var so2 = document.getElementById('so2');
-	var so2b=0;
- 	
-    so2.onclick = function(){
-    if(so2b==0){
-        so2.style.backgroundColor="#1ec5e5";
-        so2b=true;}
-    else{
-    	so2.style.backgroundColor="#cc0000";
-    	so2b=false;}
-    	refresh();
-    }
-
-
-    </script>
