@@ -70,6 +70,3 @@ def objectDelete(request):
     object = get_object_or_404(Name, pk=post_id)
     object.delete()
     return redirect('studentList')
-         
-    
-    

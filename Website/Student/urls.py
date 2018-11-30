@@ -9,3 +9,4 @@ urlpatterns = [
     #path('^student/(?P<post_id>\d+)/$',views.objectDelete, name='delete_object'),
     path('deletion', views.objectDelete, name='delete_object')
 ]
+

@@ -17,6 +17,14 @@ class Event_Statistics(models.Model):
     numberOfLocal=models.PositiveIntegerField(default=1)
     
    
+  
+        
+        
+        
+        
+        
+        
+        
     def __str__(self):
         
         return '%s' % (self.eventName)
