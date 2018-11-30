@@ -1,8 +1,7 @@
 from django.template import loader
 from django.http import HttpResponse
 import datetime
-from django.shortcuts import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import HttpResponse, render, get_object_or_404, redirect
 from .models import Event
 
 def index(request):
@@ -19,3 +18,9 @@ def list(request):
     }
     #return HttpResponse(template.render(context, request))
     return render(request,'Events/event_list_template.html',context)
+
+def objectDelete(request):
+    post_id = request.GET['post_id']
+    object = get_object_or_404(Event, pk=post_id)
+    object.delete()
+    return redirect('list')

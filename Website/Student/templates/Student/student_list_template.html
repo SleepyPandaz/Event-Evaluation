@@ -1,5 +1,5 @@
 {% include "general_template.html" %}
-{% if name_list %}
+
 
 <center><font size = "+3"> STUDENTS </font></center>
 <table style="width:100%">
@@ -19,20 +19,25 @@
 	<th> Number of Events Attended </th>
 	<th> Number of Surveys Completed </th> 
  </tr>
+ {% if name_list %}
  <tr>
  {% for student in name_list %}
-        <td>{{student.firstName}} </td>
-        <td>{{student.middleName}} </td>
+        <td>{{student.firstName}}</td>
+        <td>{{student.middleName}}</td>
         <td>{{student.lastName}} </td>
         <td>{{student.studentId}} </td>
         <td>{{student.year}} </td>
         <td>{{student.email}} </td>
         <td>{{student.numEvents}} </td>
         <td>{{student.numSurveys}} </td>
+        <td>{{student.id}} </td>
+        <!-- <td><a href= "{{ student.get_absolute_url }}"><font size = "+1">Delete</font></a></td> -->
+        <td><a href= "deletion?post_id={{student.id}}")><font size = "+1">Delete</font></a></td>
+        
+        
  </tr>
  {% endfor %}
  </table>
- 
 {% else %}
     <p>No names have been entered.</p> 
 {% endif %}
@@ -41,9 +46,12 @@
 	<div>
 		<strong>{{message|safe}}</strong>
 	</div>
+	
 	{% endfor %}
+
 {% endif %}
 <center><a href="http://127.0.0.1:8000/"><font size = "+1"> Home Page</font></a></center>
 <center><a href="http://127.0.0.1:8000/Student/upload-csv/"><font size = "+1"> Import</font></a></center>
+
 
 

@@ -11,11 +11,12 @@ from django.contrib import messages
 from django.contrib.auth.decorators import permission_required
 
 
+
 def index(request):
    html = "<H1>Students</H1><HR>"
    return render(request,'Student/index2.html')
     
-def list(request):
+def studentList(request):
     storage = messages.get_messages(request)
     name_list = Name.objects.all()
     context = {
@@ -62,11 +63,13 @@ def student_upload(request):
             
             
         )
-    return redirect('list')
-        
-def objectDelete(request, object_id):
-    object = get_object_or_404(Model, pk=object_id)
+    return redirect('studentList')
+
+def objectDelete(request):
+    post_id = request.GET['post_id']
+    object = get_object_or_404(Name, pk=post_id)
     object.delete()
+    return redirect('studentList')
          
     
     
