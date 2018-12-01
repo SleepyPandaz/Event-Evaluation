@@ -1,5 +1,10 @@
-{% include "general_template.html" %}
+{% extends 'base.html' %}	
+{% block head %}
+<title>Students</title>
 <center><font size = "+3"> STUDENTS </font></center>
+{% endblock %}
+<a class="navbar-brand" href="">Students</a>
+{% block body %}
 <table style="width:100%">
 
 <style>	
@@ -28,8 +33,7 @@
         <td>{{student.email}} </td>
         <td>{{student.numEvents}} </td>
         <td>{{student.numSurveys}} </td>
-        <td>{{student.id}} </td>
-        <td><a href= "deletion?post_id={{student.id}}")><font size = "+1">Delete</font></a></td>
+        <td><a class="btn btn-primary btn-sm" href="deletion?post_id={{student.id}}" role="button" style="margin-left:20px">DELETE</a></td>
         
         
  </tr>
@@ -47,5 +51,6 @@
 	{% endfor %}
 
 {% endif %}
-<center><a href="http://127.0.0.1:8000/"><font size = "+1"> Home Page</font></a></center>
-<center><a href="http://127.0.0.1:8000/Student/upload-csv/"><font size = "+1"> Import</font></a></center>
+<center><a class="btn btn-primary" href="http://127.0.0.1:8000/Student/upload-csv/" role="button" style="margin-left:20px">IMPORT</a></center>
+{% endblock %}
+{% include "general_template.html" %}

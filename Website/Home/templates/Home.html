@@ -5,29 +5,12 @@
   <head>
   	{% block head%} 
     <title>Home</title>
+    <center><font size = "+3"> HOME </font></center>
     {% endblock %}
   </head>
   <body>
  	{% block body %}
-	{% if user.is_authenticated %}
-	  <div style=text-align:right>
-	    <p>Hi {{ user.username }}!</p>
-	    <p><a href="{% url 'logout' %}">logout</a></p>
-	  </div>
-	
-	{% else %}
-		<meta http-equiv="refresh" content="0; URL=http://127.0.0.1:8000/login/">
-	{% endif %}
-	<h1 style=text-align:center>Home</h1>
-	
-	  <div style= text-align:center>
-	    <a class="btn btn-danger" href="/admin" role="button" style="margin-left:20px">Admin Access</a>
-		<a class="btn btn-primary" href="/Events" role="button" style="margin-left:20px">Events</a>
-		<a class="btn btn-primary" href="/Groups" role="button" style="margin-left:20px">Groups</a>
-		<a class="btn btn-primary" href="/Student" role="button" style="margin-left:20px">Students</a>
-		<a class="btn btn-primary" href="/Event_Statistics" role="button" style="margin-left:20px">Events Statistics</a>
-	  </div>
-	  {% endblock %}
+	{% endblock %}
   </body>
 {% include "general_template.html" %}
 </html>

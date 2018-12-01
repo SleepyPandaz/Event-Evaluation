@@ -1,8 +1,12 @@
-{% include "general_template.html" %}
+{% extends 'base.html' %}
 
+{% block head %}
+<title>Events</title>
 
-<center><font size = "+3"> Events </font></center>
+<center><font size = "+3"> EVENTS </font></center>
+{% endblock %}
 
+{% block body %}
 <table style="width:100%">
 
 <style>	
@@ -27,7 +31,7 @@
         <td>{{event.eventYears}} </td>
         <td>{{event.eventParticpants}} </td>
         <td>{{event.eventResponseRate}} </td>
-        <td><a href= "deletion2?post_id={{event.id}}")><font size = "+1">Delete</font></a></td>
+        <td><a class="btn btn-primary btn-sm" href= "deletion2?post_id={{event.id}}" role="button" style="margin-left:20px">DELETE</a></td>
  </tr>
  {% endfor %}
 </table>
@@ -36,5 +40,5 @@
     
     
 {% endif %}
-<a href="http://127.0.0.1:8000/">Home Page</a>
-<a href="http://127.0.0.1:8000/Events/Index/">Go to the table</a>
+{% endblock %}
+{% include "general_template.html" %}

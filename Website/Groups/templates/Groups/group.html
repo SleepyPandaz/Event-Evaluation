@@ -1,7 +1,10 @@
-
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html>
-
+{% block head %}
+<title>Groups</title>
+<center><font size = "+3"> Groups: Demographics </font></center>
+{% endblock %}
 <style>	
  table, th, td{
  	border: 1px solid black;
@@ -15,40 +18,39 @@
   	}
  </style>
 <body>
-<title> Groups </title>
-<head><b><center><font size="18">Groups: Demographics </font></center></b></head>
+{% block body %}
 <p> Click the headers to sort the table. Click again to sort descending (Z to A).</p>
 
  <table id="myTable" style="width:100%">
-<th onclick = "sortTable(0)"> Name </th>
-<th onclick = "sortTable(1)"> Year </th>
-<th onclick = "sortTable(2)"> Major </th>
-<th onclick = "sortTable(3)"> Country/State </th>
-
- <tr>
- 	<td> John Mayes </td>
- 	<td> 2 </td>
- 	<td> CS </td>
- 	<td> CA </td>
- </tr>
- <tr>
- 	<td> Jane Doe </td>
- 	<td> 4 </td>
- 	<td> Pre-Med </td>
- 	<td> MN     </td>
- </tr>
- <tr>
- 	<td> Mary Jane </td>
- 	<td> 1 </td>
- 	<td> Nutrition </td>
- 	<td> NY </td>
- </tr>
- <tr>
- 	<td> Suzzie Thomas </td>
- 	<td> 3 </td>
- 	<td> Communication </td>
- 	<td> ND </td>
- </tr>
+	<th onclick = "sortTable(0)"> Name </th>
+	<th onclick = "sortTable(1)"> Year </th>
+	<th onclick = "sortTable(2)"> Major </th>
+	<th onclick = "sortTable(3)"> Country/State </th>
+	
+	 <tr>
+	 	<td> John Mayes </td>
+	 	<td> 2 </td>
+	 	<td> CS </td>
+	 	<td> CA </td>
+	 </tr>
+	 <tr>
+	 	<td> Jane Doe </td>
+	 	<td> 4 </td>
+	 	<td> Pre-Med </td>
+	 	<td> MN     </td>
+	 </tr>
+	 <tr>
+	 	<td> Mary Jane </td>
+	 	<td> 1 </td>
+	 	<td> Nutrition </td>
+	 	<td> NY </td>
+	 </tr>
+	 <tr>
+	 	<td> Suzzie Thomas </td>
+	 	<td> 3 </td>
+	 	<td> Communication </td>
+	 	<td> ND </td>
+	 </tr>
  </table>
  <script>
 	function sortTable(n) {
@@ -106,8 +108,7 @@
   }
 }
 </script>
-<a href="http://127.0.0.1:8000/Groups/">Go to the list of events</a>
-<a href="http://127.0.0.1:8000/">Home Page</a>
  </body>
+{% endblock %}
  {% include "general_template.html" %}
  </html>
