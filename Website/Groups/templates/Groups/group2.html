@@ -1,4 +1,13 @@
 {% include "general_template.html" %}
+{% if user.is_authenticated %}
+				  <div style=text-align:right>
+				    <a class="text-light bg-dark">Hi {{ user.username }}!</a>
+				    <a class="btn btn-primary" href="{% url 'logout' %}" role="button" style="margin-left:20px">logout</a>
+				  </div>
+				
+				{% else %}
+					<meta http-equiv="refresh" content="0; URL=http://127.0.0.1:8000/login/">
+				{% endif %}	
 {% if student_name %}
     <ul>
     {% for student in student_name  %}

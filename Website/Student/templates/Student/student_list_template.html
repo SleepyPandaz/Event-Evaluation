@@ -1,4 +1,8 @@
 {% extends 'base.html' %}	
+{% if not user.is_authenticated %}
+				 
+					<meta http-equiv="refresh" content="0; URL=http://127.0.0.1:8000/login/">
+				{% endif %}	
 {% block head %}
 <title>Students</title>
 <center><font size = "+3"> STUDENTS </font></center>
