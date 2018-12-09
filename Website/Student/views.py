@@ -31,9 +31,8 @@ def student_upload(request):
         return render(request, 'Student/import.html')
     
     csv_file = request.FILES['file']
-    fileName = csv_file.name
+    fileName = csv_file.name.replace('_',' ').replace('.csv','')
     'if statement'
-    fileName.replace('_','')
     _, created = Event.objects.update_or_create(
         eventName = fileName,
         eventDate = '',
@@ -43,22 +42,23 @@ def student_upload(request):
         eventResponseRate = '',
         )
     if not csv_file.name.endswith('.csv'):
-        messages.error(request,'That is not a csv file'+csv_file.name)
+        messages.error(request,'This is not a csv file'+'\n'+csv_file.name)
         return redirect('student_upload')
     
     data_set = csv_file.read().decode('UTF-8')
     io_string = io.StringIO(data_set)
+    request.session['data_set'] = data_set
     next(io_string)
     for column in csv.reader(io_string,delimiter=',',quotechar='|'):
         if (''.join(column) == ''):
             continue
         _, created = Name.objects.update_or_create(
-            firstName= column[4],
-            middleName = column[5],
-            lastName = column[3],
-            studentId = column[2],
-            year = column[6],
-            email = column[1],
+            firstName= column[4].strip('"'),
+            middleName = column[5].strip('"'),
+            lastName = column[3].strip('"'),
+            studentId = column[2].strip('"'),
+            year = column[6].strip('"'),
+            email = column[1].strip('"'),
             
             
         )

@@ -13,7 +13,3 @@ class Name(models.Model):
     numSurveys = models.IntegerField(default=0)
     def __str__(self):
         return '%s' % (self.firstName)
-    
-    def get_absolute_url(self):
-        #return reverse('Student:objectDelete', kwargs={'post_id': self.id})
-        return ""
