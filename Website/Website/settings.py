@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 import os
+from django.conf.global_settings import SESSION_EXPIRE_AT_BROWSER_CLOSE
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +27,9 @@ SECRET_KEY = '#jd3eqe_l-7+t%i@#dyi%#hykyzw-ini$y-_hg2=cs5x9vy28a'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_EXPIRE_SECONDS = 900
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 
 # Application definition
 
@@ -126,4 +129,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'Home'
 LOGOUT_REDIRECT_URL = 'Home'
+LOGIN_URL = '/login/'
 IMPORT_EXPORT_USE_TRANSACTIONS = True

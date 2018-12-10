@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+	<head>
+		<style>body {background-color:#17a2b8}</style>
+		{% block head %}
+		<title>Add Event</title>
+		
+		<center><font size = "+3"> ADD EVENT </font></center>	
+		{% endblock %}
+	</head>
+{% block body %}
+
+	<form action="/addEvents" method="post"> 
+	<div>
+    <label for="EventName">Event Name:</label>
+    <input type="text" id="name" name="event_name" value="Enter Event Name Here" />
+	</div>
+	
+	<div>
+    <label for="date">Date of Event</label>
+    <input type="text" id="date" name=date_of_event />
+	</div>
+
+	<div>
+    <label for="EventCategory">Event Category:</label>
+    <textarea type="text" id="category" name="event_category"></textarea>
+	</div>
+	
+	<div>
+    <label for="YearsAtCSBSJU">Years at CSB/SJU</label>
+    <input type="text" id="years" name=years_at_csbsju />
+	</div>
+
+	<div>
+    <label for="NoOfParticipants">Number of Participants</label>
+    <input type="text" id="participants" name=no_of_participants />
+	</div>
+
+	<div>
+    <label for="ResponseRate">Response Rate</label>
+    <input type="text" id="responserate" name=response_rate />
+    </div>
+   
+  	
+  	<a class="btn btn-danger" href="http://127.0.0.1:8000/Events/" role="button" style="margin-left:20px">Add Event</a>
+    <input type="hidden" name="redirect" value="http://127.0.0.1:8000/Events/">
+  </form>
+	 
+{% endblock %}
+{% include "general_template.html" %}
