@@ -15,11 +15,25 @@ def index(request):
 def list(request):
     ESList = Event_Statistics.objects.all()
     data = request.session['data_set']
-    
+    year=[]
+    campus=[]
     data=data.split("\n")
+ 
+    for lines in data:
+        line=lines.split(',');
+        print(len(line));
+        if(len(line)>=35):
+            campus.append(line[33]);
+            if(line[34]!=""):
+                year.append(line[34].strip('\r'));
+            else:
+                year.append("no year");
+        
     context = {
         'ESList': ESList,
         'data':data,
+        'year':year,
+        'campus':campus
     }
     
     

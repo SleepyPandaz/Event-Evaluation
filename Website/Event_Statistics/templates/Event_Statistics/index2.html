@@ -23,45 +23,7 @@
 <body>
 
 {% block body%}	
-<script type="text/javascript">
-	
-		function refresh(){
-			var line=0;
-			{%for line in data%}
-			
-		
-			data="{{line}}";
-			
-			
-			console.log(data);
 
-			//alert("hello");
-			var left=0, right=0;
-			
-			line++;
-			 {% endfor %}
-			var chartData = [{
-			    country: "A",
-			    value:500},
-			{
-			    country: "B",
-			    value: 500}];
-			chart = new AmCharts.AmPieChart();
-		    chart.dataProvider = chartData;
-		    chart.titleField = "country";
-		    chart.valueField = "value";
-		    chart.outlineColor = "";
-		    chart.outlineAlpha = 0.8;
-		    chart.outlineThickness = 2;
-	
-		    chart.depth3D = 20;
-		    chart.angle = 30;
-	
-		    chart.write("chartdiv");
-		}
-
-		
-	    </script>
 		<div id="main" >
 			
 			<div class=left style="width:12%;	height:1000px;	background-color:#17a2b8;	margin:0px;	float:left;">
@@ -69,13 +31,14 @@
 		        window.onload = function()
 		        {
 		        	
-		        	var bn=["f1","f2","so1","so2","j1","j2","se1","se2","out1","out2","loc1","loc2","csb1","csb2","sju1","sju2"];
+		        	var bn=["f1","f2","so1","so2","j1","j2","se1","se2","fa1","fa2","st1","st2","csb1","csb2","sju1","sju2"];
 				    var b=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-				    var bs=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+				    bs=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 			    	
 				    for(i=0; i<16;i++){
 				    	b[i]=document.getElementById(bn[i]);
 				    	bs[i]=false;
+				    	
 				    }
 				 	 index=[0,2,4,6,8,10,12,14];
 					    b[index[0]].onclick = function(){
@@ -291,8 +254,8 @@
 				<div id="so1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Sophomore</div>
 				<div id="j1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Junior</div>
 				<div id="se1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Senior</div>
-				<div id="out1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Out of State</div>
-				<div id="loc1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Local</div>
+				<div id="fa1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Faculty</div>
+				<div id="st1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Staff</div>
 				<div id="csb1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">CSB</div>
 				<div id="sju1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">SJU</div>
 			</div>
@@ -337,12 +300,67 @@
 				<div id="so2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Sophomore</div>
 				<div id="j2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Junior</div>
 				<div id="se2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Senior</div>
-				<div id="out2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Out of State</div>
-				<div id="loc2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Local</div>
+				<div id="fa2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Faculty</div>
+				<div id="st2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Staff</div>
 				<div id="csb2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">CSB</div>
 				<div id="sju2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">SJU</div>
 			</div>
+<script type="text/javascript">
+	
+		function refresh(){
+			console.log(bs);
+			
+		
+			year="{{year}}";
+			campus="{{campus}}";
+			year=year.split(',');
+			campus=campus.split(',');
+			campus[campus.length-1]=campus[campus.length-1].substring(0,campus[campus.length-1].length-2);
+			year[year.length-1]=year[year.length-1].substring(0,year[year.length-1].length-2);
+			
+			console.log(year);
+			var left=0, right=0;
+			for(i=0;i<campus.length;i++){
+				if((campus[i]==" &#39;An SJU-enrolled student&#39;")&&bs[14] || (campus[i]==" &#39;A CSB-enrolled student&#39;")&&bs[12]  ||  (campus[i]==" &#39;A faculty member&#39;")&&bs[8]|| (campus[i]==" &#39;A staff member&#39;")&&bs[10]){
+					//if(((year[i]==" &#39;Senior&#39;")==bs[6] )|| ((year[i]==" &#39;2nd-year student&#39;")==bs[2])||((year[i]==" &#39;1st-year student&#39;")==bs[0])||((year[i]==" &#39;Junior&#39;")==bs[4])){
+						left++;
+						
+					//}
+				}
+				if((campus[i]==" &#39;An SJU-enrolled student&#39;")&&bs[15] || (campus[i]==" &#39;A CSB-enrolled student&#39;")&&bs[13]  ||  (campus[i]==" &#39;A faculty member&#39;")&&bs[9]|| (campus[i]==" &#39;A staff member&#39;")&&bs[11]){
+					//if((year[i]==" &#39;Senior&#39;")==bs[7] || (year[i]==" &#39;2nd-year student&#39;")==bs[3]||(year[i]==" &#39;1st-year student&#39;")==bs[1]||(year[i]==" &#39;Junior&#39;")==bs[5]){
+						right++;
+					//}
+				}
+			}
+			//alert("hello");
+			
+			
+		    console.log("LEFT: "+left+"    "+"RIGHT: "+right);
+		
+			var chartData = [{
+			    country: "Right Selected Group",
+			    value: right},
+				{
+			    country: "Left Selected Group",
+			    value:left}
+			];
+			chart = new AmCharts.AmPieChart();
+		    chart.dataProvider = chartData;
+		    chart.titleField = "country";
+		    chart.valueField = "value";
+		    chart.outlineColor = "";
+		    chart.outlineAlpha = 0.8;
+		    chart.outlineThickness = 2;
+	
+		    chart.depth3D = 20;
+		    chart.angle = 30;
+	
+		    chart.write("chartdiv");
+		}
 
+		
+	    </script>
 				
 
 			
