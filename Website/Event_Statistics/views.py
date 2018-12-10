@@ -15,9 +15,8 @@ def index(request):
 def list(request):
     ESList = Event_Statistics.objects.all()
     data = request.session['data_set']
-    print(data)
-    file=open("Event_Statistics\dataFiles\Alphabet_Soup_Evaluation.csv",'r')
-    data=file.read().split("\n")
+    
+    data=data.split("\n")
     context = {
         'ESList': ESList,
         'data':data,
