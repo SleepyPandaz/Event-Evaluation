@@ -26,10 +26,11 @@
 <script type="text/javascript">
 	
 		function refresh(){
+			var line=0;
 			{%for line in data%}
 			
 		
-			data="{{}}";
+			data="{{line}}";
 			
 			
 			console.log(data);
@@ -37,14 +38,14 @@
 			//alert("hello");
 			var left=0, right=0;
 			
-		
+			line++;
 			 {% endfor %}
 			var chartData = [{
 			    country: "A",
-			    value:left},
+			    value:500},
 			{
 			    country: "B",
-			    value: right}];
+			    value: 500}];
 			chart = new AmCharts.AmPieChart();
 		    chart.dataProvider = chartData;
 		    chart.titleField = "country";
