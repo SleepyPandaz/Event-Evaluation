@@ -1,329 +1,47 @@
+{% extends 'base.html' %}
 {% include "Event_Statistics/css.html"%}
 {% if not user.is_authenticated %}
-				 
-					<meta http-equiv="refresh" content="0; URL=http://127.0.0.1:8000/login/">
-				{% endif %}	
-<div>
-		<div class=left>
-			<script type = "text/javascript">
-	        window.onload = function()
-	        {
-	        	
-	        	var bn=["f1","f2","so1","so2","j1","j2","se1","se2","out1","out2","loc1","loc2","csb1","csb2","sju1","sju2"];
-			    var b=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-			    var bs=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-		    	
-			    for(i=0; i<16;i++){
-			    	b[i]=document.getElementById(bn[i]);
-			    	bs[i]=false;
-			    }
-			 	 index=[0,2,4,6,8,10,12,14];
-				    b[index[0]].onclick = function(){
-				    if(bs[index[0]]==0){
-				        b[index[0]].style.backgroundColor="#1ec5e5";
-				        bs[index[0]]=true;
-				        b[index[0]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[0]+1]=true;}
-				    else{
-				    	b[index[0]].style.backgroundColor="#cc0000";
-				    	bs[index[0]]=false;
-				    	b[index[0]+1].style.backgroundColor="#cc0000";
-				    	bs[index[0]+1]=false;}
-				    	refresh();
-				    }
-				    
-				 	
-				    b[index[0]+1].onclick = function(){
-				    if(bs[index[0]+1]==0){
-				        b[index[0]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[0]+1]=true;}
-				    else{
-				    	b[index[0]+1].style.backgroundColor="#cc0000";
-				    	bs[index[0]+1]=false;}
-				    	refresh();
-				    }
-				    
-				    
-				    
-				    b[index[1]].onclick = function(){
-				    if(bs[index[1]]==0){
-				        b[index[1]].style.backgroundColor="#1ec5e5";
-				        bs[index[1]]=true;
-				        b[index[1]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[1]+1]=true;}
-				    else{
-				    	b[index[1]].style.backgroundColor="#cc0000";
-				    	bs[index[1]]=false;
-				    	b[index[1]+1].style.backgroundColor="#cc0000";
-				    	bs[index[1]+1]=false;}
-				    	refresh();
-				    }
-				    
-				 	
-				    b[index[1]+1].onclick = function(){
-				    if(bs[index[1]+1]==0){
-				        b[index[1]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[1]+1]=true;}
-				    else{
-				    	b[index[1]+1].style.backgroundColor="#cc0000";
-				    	bs[index[1]+1]=false;}
-				    	refresh();
-				    }
-				    
-				    
-				    
-				    
-				   b[index[2]].onclick = function(){
-				    if(bs[index[2]]==0){
-				        b[index[2]].style.backgroundColor="#1ec5e5";
-				        bs[index[2]]=true;
-				        b[index[2]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[2]+1]=true;}
-				    else{
-				    	b[index[2]].style.backgroundColor="#cc0000";
-				    	bs[index[2]]=false;
-				    	b[index[2]+1].style.backgroundColor="#cc0000";
-				    	bs[index[2]+1]=false;}
-				    	refresh();
-				    }
-				    
-				 	
-				    b[index[2]+1].onclick = function(){
-				    if(bs[index[2]+1]==0){
-				        b[index[2]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[2]+1]=true;}
-				    else{
-				    	b[index[2]+1].style.backgroundColor="#cc0000";
-				    	bs[index[2]+1]=false;}
-				    	refresh();
-				    }
-				    
-				    b[index[3]].onclick = function(){
-				    if(bs[index[3]]==0){
-				        b[index[3]].style.backgroundColor="#1ec5e5";
-				        bs[index[3]]=true;
-				        b[index[3]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[3]+1]=true;}
-				    else{
-				    	b[index[3]].style.backgroundColor="#cc0000";
-				    	bs[index[3]]=false;
-				    	b[index[3]+1].style.backgroundColor="#cc0000";
-				    	bs[index[3]+1]=false;}
-				    	refresh();
-				    }
-				    
-				 	
-				    b[index[3]+1].onclick = function(){
-				    if(bs[index[3]+1]==0){
-				        b[index[3]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[3]+1]=true;}
-				    else{
-				    	b[index[3]+1].style.backgroundColor="#cc0000";
-				    	bs[index[3]+1]=false;}
-				    	refresh();
-				    }
-				    
-				    
-				    b[index[4]].onclick = function(){
-				    if(bs[index[4]]==0){
-				        b[index[4]].style.backgroundColor="#1ec5e5";
-				        bs[index[4]]=true;
-				        b[index[4]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[4]+1]=true;}
-				    else{
-				    	b[index[4]].style.backgroundColor="#cc0000";
-				    	bs[index[4]]=false;
-				    	b[index[4]+1].style.backgroundColor="#cc0000";
-				    	bs[index[4]+1]=false;}
-				    	refresh();
-				    }
-				    
-				 	
-				    b[index[4]+1].onclick = function(){
-				    if(bs[index[4]+1]==0){
-				        b[index[4]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[4]+1]=true;}
-				    else{
-				    	b[index[4]+1].style.backgroundColor="#cc0000";
-				    	bs[index[4]+1]=false;}
-				    	refresh();
-				    }
-				    
-				    b[index[5]].onclick = function(){
-				    if(bs[index[5]]==0){
-				        b[index[5]].style.backgroundColor="#1ec5e5";
-				        bs[index[5]]=true;
-				        b[index[5]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[5]+1]=true;}
-				    else{
-				    	b[index[5]].style.backgroundColor="#cc0000";
-				    	bs[index[5]]=false;
-				    	b[index[5]+1].style.backgroundColor="#cc0000";
-				    	bs[index[5]+1]=false;}
-				    	refresh();
-				    }
-				    
-				 	
-				    b[index[5]+1].onclick = function(){
-				    if(bs[index[5]+1]==0){
-				        b[index[5]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[5]+1]=true;}
-				    else{
-				    	b[index[5]+1].style.backgroundColor="#cc0000";
-				    	bs[index[5]+1]=false;}
-				    	refresh();
-				    }
-				    
-				    
-				    b[index[6]].onclick = function(){
-				    if(bs[index[6]]==0){
-				        b[index[6]].style.backgroundColor="#1ec5e5";
-				        bs[index[6]]=true;
-				        b[index[6]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[6]+1]=true;}
-				    else{
-				    	b[index[6]].style.backgroundColor="#cc0000";
-				    	bs[index[6]]=false;
-				    	b[index[6]+1].style.backgroundColor="#cc0000";
-				    	bs[index[6]+1]=false;}
-				    	refresh();
-				    }
-				    
-				 	
-				    b[index[6]+1].onclick = function(){
-				    if(bs[index[6]+1]==0){
-				        b[index[6]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[6]+1]=true;}
-				    else{
-				    	b[index[6]+1].style.backgroundColor="#cc0000";
-				    	bs[index[6]+1]=false;}
-				    	refresh();
-				    }
-				    
-				    
-				    b[index[7]].onclick = function(){
-				    if(bs[index[7]]==0){
-				        b[index[7]].style.backgroundColor="#1ec5e5";
-				        bs[index[7]]=true;
-				        b[index[7]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[7]+1]=true;}
-				    else{
-				    	b[index[7]].style.backgroundColor="#cc0000";
-				    	bs[index[7]]=false;
-				    	b[index[7]+1].style.backgroundColor="#cc0000";
-				    	bs[index[7]+1]=false;}
-				    	refresh();
-				    }
-				    
-				 	
-				    b[index[7]+1].onclick = function(){
-				    if(bs[index[7]+1]==0){
-				        b[index[7]+1].style.backgroundColor="#1ec5e5";
-				        bs[index[7]+1]=true;}
-				    else{
-				    	b[index[7]+1].style.backgroundColor="#cc0000";
-				    	bs[index[7]+1]=false;}
-				    	refresh();
-				    }
-	      	}
-	    	</script>
-			<div id="f1" class=button>FirstYear</div>
-			<div id="so1" class=button>Sophomore</div>
-			<div id="j1" class=button>Junior</div>
-			<div id="se1" class=button>Senior</div>
-			<div id="out1" class=button>Out of State</div>
-			<div id="loc1" class=button>Local</div>
-			<div id="csb1" class=button>CSB</div>
-			<div id="sju1" class=button>SJU</div>
-		</div>
-
-		<div id="mid" class=mid>
-		
-			<script type="text/javascript"
-				src="http://sandbox.runjs.cn/uploads/rs/146/73fi1rab/amcharts.js"></script>
-			<div id="chartdiv"></div>
-			<style>
-				body {
-					background: white;
-				}
-				
-				div {
-					margin: auto;
-					text-align: center;
-					width: 100%;
-					height: 1000px
-				}
-				</style>
-			<script type="text/javascript">
-			var chart;
-			var legend;
-			var a=260, b=201, c=65,d=39, e=19, f=10;
-			var chartData = [{
-			    country: "A",
-			    value: a},
-			{
-			    country: "B",
-			    value: b}];
-			AmCharts.ready(function() {
-	
-			    chart = new AmCharts.AmPieChart();
-			    chart.dataProvider = chartData;
-			    chart.titleField = "country";
-			    chart.valueField = "value";
-			    chart.outlineColor = "";
-			    chart.outlineAlpha = 0.8;
-			    chart.outlineThickness = 2;
-	
-			    chart.depth3D = 20;
-			    chart.angle = 30;
-	
-			    chart.write("chartdiv");
-			});
-			</script>
-		
-
-		</div>
-
-		<div class=right>
-			<div id="f2" class=button>FirstYear</div>
-			<div id="so2" class=button>Sophomore</div>
-			<div id="j2" class=button>Junior</div>
-			<div id="se2" class=button>Senior</div>
-			<div id="out2" class=button>Out of State</div>
-			<div id="loc2" class=button>Local</div>
-			<div id="csb2" class=button>CSB</div>
-			<div id="sju2" class=button>SJU</div>
-		</div>
-		<p><script type="text/javascript">bn[0]</script></p>
-		<a href="http://127.0.0.1:8000/Events/">Go back to Events</a> <a
-			href="http://127.0.0.1:8000/">Go back to HomePage</a>
-
-	</div>
-
-
-	<script type="text/javascript">
-		function refresh(){
+<meta http-equiv="refresh" content="0; URL=http://127.0.0.1:8000/login/">
+{% endif %}	
 			
-			l=data.length();alert("hello");
+	<head>
+		{% block head %}
+			<center><font size = "+3">Event Statistic</font></center>	
+		{% endblock %}
+		
+	</head>
+	
+	
+	
+	
+		
+	    
+	    
+	    
+	    
+	    
+<body>
+
+{% block body%}	
+<script type="text/javascript">
+	
+		function refresh(){
+			{%for line in data%}
+			
+		
+			data="{{}}";
+			
+			
+			console.log(data);
+
+			//alert("hello");
 			var left=0, right=0;
-			for(i=1,i<l,i++){
-				var student=data[i].split("\t");
-				if((student[30]=="An SJU-enrolled student")==bs[14] || (student[30]==A CSB-enrolled student)==bs[12]){
-					if((studemt[31]=="Senior")==bs[6] || (studemt[31]=="2nd-year student")==bs[2]){
-						left++;
-					}
-				}
-				if((student[30]=="An SJU-enrolled student")==bs[15] || (student[30]==A CSB-enrolled student)==bs[13]){
-					if((studemt[31]=="Senior")==bs[7] || (studemt[31]=="2nd-year student")==bs[3]){
-						right++;
-					}
-				}
-			}
+			
 		
-		
+			 {% endfor %}
 			var chartData = [{
 			    country: "A",
-			    value: left},
+			    value:left},
 			{
 			    country: "B",
 			    value: right}];
@@ -340,14 +58,309 @@
 	
 		    chart.write("chartdiv");
 		}
+
 		
-		
-			
-			
-			
-	    
-	
 	    </script>
+		<div id="main" >
+			
+			<div class=left style="width:12%;	height:1000px;	background-color:#17a2b8;	margin:0px;	float:left;">
+				<script type = "text/javascript">
+		        window.onload = function()
+		        {
+		        	
+		        	var bn=["f1","f2","so1","so2","j1","j2","se1","se2","out1","out2","loc1","loc2","csb1","csb2","sju1","sju2"];
+				    var b=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+				    var bs=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+			    	
+				    for(i=0; i<16;i++){
+				    	b[i]=document.getElementById(bn[i]);
+				    	bs[i]=false;
+				    }
+				 	 index=[0,2,4,6,8,10,12,14];
+					    b[index[0]].onclick = function(){
+					    if(bs[index[0]]==0){
+					        b[index[0]].style.backgroundColor="#1ec5e5";
+					        bs[index[0]]=true;
+					        b[index[0]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[0]+1]=true;}
+					    else{
+					    	b[index[0]].style.backgroundColor="#cc0000";
+					    	bs[index[0]]=false;
+					    	b[index[0]+1].style.backgroundColor="#cc0000";
+					    	bs[index[0]+1]=false;}
+					    	refresh();
+					    }
+					    
+					 	
+					    b[index[0]+1].onclick = function(){
+					    if(bs[index[0]+1]==0){
+					        b[index[0]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[0]+1]=true;}
+					    else{
+					    	b[index[0]+1].style.backgroundColor="#cc0000";
+					    	bs[index[0]+1]=false;}
+					    	refresh();
+					    }
+					    
+					    
+					    
+					    b[index[1]].onclick = function(){
+					    if(bs[index[1]]==0){
+					        b[index[1]].style.backgroundColor="#1ec5e5";
+					        bs[index[1]]=true;
+					        b[index[1]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[1]+1]=true;}
+					    else{
+					    	b[index[1]].style.backgroundColor="#cc0000";
+					    	bs[index[1]]=false;
+					    	b[index[1]+1].style.backgroundColor="#cc0000";
+					    	bs[index[1]+1]=false;}
+					    	refresh();
+					    }
+					    
+					 	
+					    b[index[1]+1].onclick = function(){
+					    if(bs[index[1]+1]==0){
+					        b[index[1]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[1]+1]=true;}
+					    else{
+					    	b[index[1]+1].style.backgroundColor="#cc0000";
+					    	bs[index[1]+1]=false;}
+					    	refresh();
+					    }
+					    
+					    
+					    
+					    
+					   b[index[2]].onclick = function(){
+					    if(bs[index[2]]==0){
+					        b[index[2]].style.backgroundColor="#1ec5e5";
+					        bs[index[2]]=true;
+					        b[index[2]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[2]+1]=true;}
+					    else{
+					    	b[index[2]].style.backgroundColor="#cc0000";
+					    	bs[index[2]]=false;
+					    	b[index[2]+1].style.backgroundColor="#cc0000";
+					    	bs[index[2]+1]=false;}
+					    	refresh();
+					    }
+					    
+					 	
+					    b[index[2]+1].onclick = function(){
+					    if(bs[index[2]+1]==0){
+					        b[index[2]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[2]+1]=true;}
+					    else{
+					    	b[index[2]+1].style.backgroundColor="#cc0000";
+					    	bs[index[2]+1]=false;}
+					    	refresh();
+					    }
+					    
+					    b[index[3]].onclick = function(){
+					    if(bs[index[3]]==0){
+					        b[index[3]].style.backgroundColor="#1ec5e5";
+					        bs[index[3]]=true;
+					        b[index[3]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[3]+1]=true;}
+					    else{
+					    	b[index[3]].style.backgroundColor="#cc0000";
+					    	bs[index[3]]=false;
+					    	b[index[3]+1].style.backgroundColor="#cc0000";
+					    	bs[index[3]+1]=false;}
+					    	refresh();
+					    }
+					    
+					 	
+					    b[index[3]+1].onclick = function(){
+					    if(bs[index[3]+1]==0){
+					        b[index[3]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[3]+1]=true;}
+					    else{
+					    	b[index[3]+1].style.backgroundColor="#cc0000";
+					    	bs[index[3]+1]=false;}
+					    	refresh();
+					    }
+					    
+					    
+					    b[index[4]].onclick = function(){
+					    if(bs[index[4]]==0){
+					        b[index[4]].style.backgroundColor="#1ec5e5";
+					        bs[index[4]]=true;
+					        b[index[4]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[4]+1]=true;}
+					    else{
+					    	b[index[4]].style.backgroundColor="#cc0000";
+					    	bs[index[4]]=false;
+					    	b[index[4]+1].style.backgroundColor="#cc0000";
+					    	bs[index[4]+1]=false;}
+					    	refresh();
+					    }
+					    
+					 	
+					    b[index[4]+1].onclick = function(){
+					    if(bs[index[4]+1]==0){
+					        b[index[4]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[4]+1]=true;}
+					    else{
+					    	b[index[4]+1].style.backgroundColor="#cc0000";
+					    	bs[index[4]+1]=false;}
+					    	refresh();
+					    }
+					    
+					    b[index[5]].onclick = function(){
+					    if(bs[index[5]]==0){
+					        b[index[5]].style.backgroundColor="#1ec5e5";
+					        bs[index[5]]=true;
+					        b[index[5]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[5]+1]=true;}
+					    else{
+					    	b[index[5]].style.backgroundColor="#cc0000";
+					    	bs[index[5]]=false;
+					    	b[index[5]+1].style.backgroundColor="#cc0000";
+					    	bs[index[5]+1]=false;}
+					    	refresh();
+					    }
+					    
+					 	
+					    b[index[5]+1].onclick = function(){
+					    if(bs[index[5]+1]==0){
+					        b[index[5]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[5]+1]=true;}
+					    else{
+					    	b[index[5]+1].style.backgroundColor="#cc0000";
+					    	bs[index[5]+1]=false;}
+					    	refresh();
+					    }
+					    
+					    
+					    b[index[6]].onclick = function(){
+					    if(bs[index[6]]==0){
+					        b[index[6]].style.backgroundColor="#1ec5e5";
+					        bs[index[6]]=true;
+					        b[index[6]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[6]+1]=true;}
+					    else{
+					    	b[index[6]].style.backgroundColor="#cc0000";
+					    	bs[index[6]]=false;
+					    	b[index[6]+1].style.backgroundColor="#cc0000";
+					    	bs[index[6]+1]=false;}
+					    	refresh();
+					    }
+					    
+					 	
+					    b[index[6]+1].onclick = function(){
+					    if(bs[index[6]+1]==0){
+					        b[index[6]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[6]+1]=true;}
+					    else{
+					    	b[index[6]+1].style.backgroundColor="#cc0000";
+					    	bs[index[6]+1]=false;}
+					    	refresh();
+					    }
+					    
+					    
+					    b[index[7]].onclick = function(){
+					    if(bs[index[7]]==0){
+					        b[index[7]].style.backgroundColor="#1ec5e5";
+					        bs[index[7]]=true;
+					        b[index[7]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[7]+1]=true;}
+					    else{
+					    	b[index[7]].style.backgroundColor="#cc0000";
+					    	bs[index[7]]=false;
+					    	b[index[7]+1].style.backgroundColor="#cc0000";
+					    	bs[index[7]+1]=false;}
+					    	refresh();
+					    }
+					    
+					 	
+					    b[index[7]+1].onclick = function(){
+					    if(bs[index[7]+1]==0){
+					        b[index[7]+1].style.backgroundColor="#1ec5e5";
+					        bs[index[7]+1]=true;}
+					    else{
+					    	b[index[7]+1].style.backgroundColor="#cc0000";
+					    	bs[index[7]+1]=false;}
+					    	refresh();
+					    }
+		      	}
+		    	</script>
+				<div id="f1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">FirstYear</div>
+				<div id="so1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Sophomore</div>
+				<div id="j1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Junior</div>
+				<div id="se1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Senior</div>
+				<div id="out1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Out of State</div>
+				<div id="loc1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Local</div>
+				<div id="csb1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">CSB</div>
+				<div id="sju1" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">SJU</div>
+			</div>
+
+			<div id="mid" class=mid style="width:76%;	height:1000px;	background-color:#17a2b8;	float:left;">
+			
+				<div id="chartdiv" style="width: 76%; height: 500px;"></div>   
+
+				
+				<script type="text/javascript">
+				var chart;
+				var legend;
+				var a=26, b=210;
+				var chartData = [{
+				    country: "Left Selected Group",
+				    value: a},
+				{
+				    country: "Right Selected Group",
+				    value: b}];
+				AmCharts.ready(function() {
+					
+				    chart = new AmCharts.AmPieChart();
+				    chart.dataProvider = chartData;
+				    chart.titleField = "country";
+				    chart.valueField = "value";
+				    chart.outlineColor = "";
+				    chart.outlineAlpha = 0.8;
+				    chart.outlineThickness = 2;
+		
+				    chart.depth3D = 20;
+				    chart.angle = 30;
+		
+				    chart.write("chartdiv");
+				});
+				</script>
+			
+	
+			</div>
+
+			<div class=right style="width:12%;	height:1000px;	background-color:#17a2b8;	float:left;">
+				<div id="f2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">FirstYear</div>
+				<div id="so2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Sophomore</div>
+				<div id="j2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Junior</div>
+				<div id="se2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Senior</div>
+				<div id="out2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Out of State</div>
+				<div id="loc2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">Local</div>
+				<div id="csb2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">CSB</div>
+				<div id="sju2" class=button style="width:140px;	height:100px;	background-color:#cc0000;	border-radius:20px;	margin:18px;	text-align:center;	line-height:100px;">SJU</div>
+			</div>
+
+				
+
+			
+			
+
+	</div>
+
+
+
+		<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script src="https://www.amcharts.com/lib/3/pie.js"></script>
+		<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+		<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+		<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+		<script src="http://sandbox.runjs.cn/uploads/rs/146/73fi1rab/amcharts.js"></script>
+{% endblock %}
+</body>
+		
+		
 
 
 

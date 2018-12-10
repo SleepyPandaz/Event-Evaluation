@@ -1,4 +1,4 @@
- {% extends 'base.html' %}
+{% extends 'base.html' %}
 {% if not user.is_authenticated %}
 				 
 					<meta http-equiv="refresh" content="0; URL=http://127.0.0.1:8000/login/">
@@ -6,15 +6,53 @@
 
 <!doctype html>
 <html lang="en">
+
   <head>
   	{% block head%} 
+  	 	<img src="https://www.csbsju.edu/images/Intercultural%20Center/IISS%20logo_Final-1.png" alt="logoo" width="132" height="150" class = "center" >
+  	
     <title>Home</title>
     <center><font size = "+3"> HOME </font></center>
     {% endblock %}
   </head>
+  
+  
   <body>
  	{% block body %}
-	{% endblock %}
+ 	<table style="width:100%">
+	<style>	
+ 		table, th, td{ border: 1px solid black; }
+  		th,td{padding: 5px;}
+  		th{text-align: left;}
+ 	</style>
+ 	
+ <tr>
+	<th> First Name </th>
+	<th> Middle Name </th>
+	<th> Last Name </th>
+	<th> Student ID </th>
+	<th> Year </th>
+	<th> Email </th>
+	<th> Number of Events Attended </th>
+	<th> Number of Surveys Completed </th> 
+ </tr>
+ 
+ <tr>
+ {% for student in name_list %}
+        <td>{{student.firstName}}</td>
+        <td>{{student.middleName}}</td>
+        <td>{{student.lastName}} </td>
+        <td>{{student.studentId}} </td>
+        <td>{{student.year}} </td>
+        <td>{{student.email}} </td>
+        <td>{{student.numEvents}} </td>
+        <td>{{student.numSurveys}} </td>        
+ </tr>
+ {% endfor %}
+ </table>
+{% endblock %}
   </body>
+  
+  
 {% include "general_template.html" %}
 </html>
